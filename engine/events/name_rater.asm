@@ -20,12 +20,15 @@ NameRater:
 	jr nz, .egg
 ; ... or a Pokemon you got from a trade.
 	call GetCurNick
-	ld a, [wInitialOptions]
-	bit TRADED_AS_OT_OPT, a
-	jr nz, .no_name_lock
-	call CheckIfMonIsYourOT
-	jr c, .traded
-.no_name_lock
+	
+; But we like to rename traded Pokemon here.
+	; ld a, [wInitialOptions]
+	; bit TRADED_AS_OT_OPT, a
+	; jr nz, .no_name_lock
+	; call CheckIfMonIsYourOT
+	; jr c, .traded
+; .no_name_lock
+
 ; This name is good, but we can do better.  How about it?
 	ld hl, NameRaterIsGoodText
 	call PrintText
